@@ -1,6 +1,31 @@
-@CareerTracker.Api_HostAddress = http://localhost:5068
+@Api_HostAddress = http://localhost:5068
+@TOKEN = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMTliMzVjZS03MzBhLTdhY2YtYTA4Yy0zM2IxMTQxOGVmNzUiLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJqdGkiOiJhMTllYWZhYS1iMmIxLTQ5ZjAtYjBjNy1hYzg4NjA4OTg4MTYiLCJleHAiOjE3NjYxMzYzNjUsImlzcyI6IkNhcmVlclRyYWNrZXIiLCJhdWQiOiJDYXJlZXJUcmFja2VyVXNlcnMifQ.oCdWB_YEcdM1xeIPQEf_9ofNGpb31-HS7taZnHLbbFE
 
-GET {{CareerTracker.Api_HostAddress}}/weatherforecast/
+GET {{Api_HostAddress}}/weatherforecast/
 Accept: application/json
 
-###
+### REGISTER NEW USER
+POST {{Api_HostAddress}}/api/auth/register
+Content-Type: application/json
+Accept: application/json
+
+{
+  "email": "test@test.com",
+  "password": "123456",
+  "password2": "123456"
+}
+
+### LOGIN USER
+POST {{Api_HostAddress}}/api/auth/login
+Content-Type: application/json
+Accept: application/json
+
+{
+  "email": "test@test.com",
+  "password": "123456"
+}
+
+### SECURE ENDPOINT EXAMPLE
+GET {{Api_HostAddress}}/api/auth/secure
+Authorization: Bearer {{TOKEN}}
+Accept: application/json
