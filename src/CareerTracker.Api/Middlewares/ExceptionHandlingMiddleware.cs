@@ -17,9 +17,7 @@ public class ExceptionHandlingMiddleware
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex);
-
-            _logger.LogError(ex, "An unhandled exception occurred.");
+            _logger.LogError(ex.Message, "An unhandled exception occurred.");
             context.Response.StatusCode = ex switch
             {
                 ArgumentNullException or ArgumentException => StatusCodes.Status400BadRequest,
