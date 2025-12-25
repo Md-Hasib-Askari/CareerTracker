@@ -32,11 +32,12 @@ public class AuthService : IAuthService
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
         };
 
-        Console.WriteLine(_jwtSettings.Key.Length);
-
         var key = new SymmetricSecurityKey(
             System.Text.Encoding.UTF8.GetBytes(_jwtSettings.Key)
         );
+
+        _logger.LogInformation("Using JWT key: {JwtKey}", _jwtSettings.Key);
+        _logger.LogInformation("Using ExpiryMinutes: {ExpiryMinutes}", _jwtSettings.ExpiryMinutes);
 
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
