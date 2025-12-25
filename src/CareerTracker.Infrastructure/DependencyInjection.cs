@@ -6,8 +6,12 @@ public static class DependencyInjection
     public static IServiceCollection AddInfrastructure(this IServiceCollection services)
     {
         // Register repositories
+        // User
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IUserProfileRepository, UserProfileRepository>();
+
+        // Job Post
+        services.AddScoped<IJobPostRepository, JobPostRepository>();
         // Add other infrastructure services here
 
         return services;
@@ -22,8 +26,12 @@ public static class DependencyInjection
     public static IServiceCollection AddApplication(this IServiceCollection services)
     {
         // Register application services
+        // User
         services.AddScoped<IProfileService, ProfileService>();
         services.AddScoped<IAuthService, AuthService>();
+
+        // Job Post
+        services.AddScoped<IJobPostService, JobPostService>();
         // Add other application services here
 
         return services;

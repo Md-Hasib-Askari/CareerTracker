@@ -57,3 +57,40 @@ Accept: application/json
   "Currency": "USD",
   "RemotePreference": 1
 }
+
+### GET JOB POSTS
+GET {{Api_HostAddress}}/api/jobs
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+### GET JOB POSTS WITH FILTERS
+GET {{Api_HostAddress}}/api/jobs?searchTerm=developer&location=New%20York&remoteType=Remote&employmentType=Full-time&page=1&pageSize=10
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+### CREATE JOB POST
+POST {{Api_HostAddress}}/api/jobs
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "JobSourceId": "00000000-0000-0000-0000-000000000000",
+  "ExternalId": "ext-12345",
+  "Title": "Senior Software Developer",
+  "CompanyName": "Tech Corp",
+  "Location": "New York, USA",
+  "RemoteType": 1,
+  "EmploymentType": 1,
+  "Description": "We are looking for an experienced software developer...",
+  "Url": "https://example.com/job/12345",
+  "PostedAt": "2024-01-15T10:00:00Z",
+  "CollectedAt": "2024-01-15T12:00:00Z"
+}
+
+### GET JOB POST BY ID
+GET {{Api_HostAddress}}/api/jobs/{jobId}
+Authorization: Bearer {{TOKEN}}
+Accept: application/json
