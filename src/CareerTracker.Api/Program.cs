@@ -14,7 +14,9 @@ builder.Services.AddEndpointsApiExplorer();
 // builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<CareerTrackerDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("Default")));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("Default"),
+    b => b.MigrationsAssembly("CareerTracker.Infrastructure")
+));
 
 // JWT Implementation
 builder.Services.Configure<JwtSettings>(
@@ -41,9 +43,12 @@ builder.Services
 builder.Services.AddAuthorization();
 
 // Dependency Injection
-builder.Services.AddScoped<IAuthService, AuthService>();
+// builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddDbContext(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("Default"))
+);
 builder.Services.AddInfrastructure();
-// builder.Services.AddApplication();
+builder.Services.AddApplication();
 
 var app = builder.Build();
 

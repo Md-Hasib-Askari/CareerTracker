@@ -1,5 +1,5 @@
 @Api_HostAddress = http://localhost:5068
-@TOKEN = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMTliMzVjZS03MzBhLTdhY2YtYTA4Yy0zM2IxMTQxOGVmNzUiLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJqdGkiOiJhMTllYWZhYS1iMmIxLTQ5ZjAtYjBjNy1hYzg4NjA4OTg4MTYiLCJleHAiOjE3NjYxMzYzNjUsImlzcyI6IkNhcmVlclRyYWNrZXIiLCJhdWQiOiJDYXJlZXJUcmFja2VyVXNlcnMifQ.oCdWB_YEcdM1xeIPQEf_9ofNGpb31-HS7taZnHLbbFE
+@TOKEN = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMTliMzVjZS03MzBhLTdhY2YtYTA4Yy0zM2IxMTQxOGVmNzUiLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJqdGkiOiIwOWQ5NGJiOC1iYzRmLTQ0YmUtYTE1MS02MjBjNWZjMGY0N2QiLCJleHAiOjE3NjY2ODM5OTIsImlzcyI6IkNhcmVlclRyYWNrZXIiLCJhdWQiOiJDYXJlZXJUcmFja2VyVXNlcnMifQ.tC_wDv_OP78aYYxznGUOZMF5vrKVPSkQvGibxk7oyA4
 
 GET {{Api_HostAddress}}/weatherforecast/
 Accept: application/json
@@ -29,3 +29,31 @@ Accept: application/json
 GET {{Api_HostAddress}}/api/auth/secure
 Authorization: Bearer {{TOKEN}}
 Accept: application/json
+
+### GET PROFILE
+GET {{Api_HostAddress}}/api/profile
+Authorization: Bearer {{TOKEN}}
+Accept: application/json
+
+### UPSERT PROFILE
+PUT {{Api_HostAddress}}/api/profile
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "FirstName": "John",
+  "LastName": "Doe",
+  "Headline": "Software Developer",
+  "Bio": "Software Developer with 5 years of experience.",
+  "Address": "New York, USA",
+  "PhoneNumber": "123-456-7890",
+  "Skills": ["C#", ".NET", "SQL"],
+  "YearsOfExperience": 5,
+  "PreferredJobTitles": ["Senior Developer", "Lead Developer"],
+  "PreferredLocations": ["New York, USA", "Remote"],
+  "PreferredJobTypes": ["Full-time", "Contract"],
+  "MinSalaryExpectation": 70000,
+  "Currency": "USD",
+  "RemotePreference": 1
+}

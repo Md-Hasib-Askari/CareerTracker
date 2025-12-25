@@ -7,6 +7,7 @@ public class ProfileService : IProfileService
     {
         _profileRepo = profileRepo;
     }
+
     public async Task<ProfileDto?> GetProfileAsync(Guid userId, CancellationToken cancellationToken)
     {
         var profile = await _profileRepo.GetByUserIdAsync(userId, cancellationToken);
