@@ -14,6 +14,9 @@ public static class DependencyInjection
         services.AddScoped<IJobPostRepository, JobPostRepository>();
         // Add other infrastructure services here
 
+        // Background services
+        services.AddScoped<IJobSourceClient, FakeJobSourceClient>();
+
         return services;
     }
 
@@ -33,6 +36,9 @@ public static class DependencyInjection
         // Job Post
         services.AddScoped<IJobPostService, JobPostService>();
         // Add other application services here
+
+        // Background services
+        services.AddScoped<IFetchJob, FetchJob>();
 
         return services;
     }
